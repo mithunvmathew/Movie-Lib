@@ -18,9 +18,9 @@ paths:
     get:
       summary: Movies list form movie library
       description: Movies list form movie library based on Min RunTime and Max RunTime.
-      If select only "min", all the movies have RunTime > min will get back as result
-      If select only "max", all the movies have RunTime < max will get back as result
-      If select both "min" and "max", all the movies have min < RunTime >max will get back as result
+                 If select only "min", all the movies have RunTime > min will get back as result
+                If select only "max", all the movies have RunTime < max will get back as result
+             If select both "min" and "max", all the movies have min < RunTime >max will get back as result
       parameters:
         - in: query
           name: min
@@ -77,4 +77,3 @@ definitions:
       runTime:
         type: integer
         description: The total time needed to finish the movie
-        
