@@ -46,7 +46,7 @@ public class Application {
 		return (args) -> {
 			repository.deleteIndex();
 			// Create and insert some Movies with fake data
-			for (int i = 0; i < 3; i++) {
+			for (int i = 0; i < 20; i++) {
 				repository.save(new Movie(faker.lorem().word(), faker.number().numberBetween(1970, 2017),
 						faker.number().numberBetween(1, 9999), faker.lorem().paragraph(), i));
 			}
