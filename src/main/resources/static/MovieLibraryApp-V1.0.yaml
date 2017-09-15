@@ -1,0 +1,80 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Movie-Library
+  description: |
+    Movie Library used to find list of movies as per the user selection
+host: 'localhost:8080'
+basePath: /movie-library/
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /movies/playtime:
+    get:
+      summary: Movies list form movie library
+      description: Movies list form movie library based on Min RunTime and Max RunTime.
+      If select only "min", all the movies have RunTime > min will get back as result
+      If select only "max", all the movies have RunTime < max will get back as result
+      If select both "min" and "max", all the movies have min < RunTime >max will get back as result
+      parameters:
+        - in: query
+          name: min
+          description: Minimum RunTime of the movie
+          required: false
+          type: string
+        - in: query
+          name: max
+          description: Maximum RunTime of the movie
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Movies List
+          schema:
+            title: Movies List
+            type: array
+            items:
+              $ref: '#/definitions/movie'
+  /movies/search:
+    get:
+      summary: Movies list form movie library based on a search keyword
+      description: Movies list form movie library based on search keyword in the fields "title" or "blurb"
+      parameters:
+        - in: query
+          name: keyword
+          description: The keyword used to search
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Movies List
+          schema:
+            title: Movies List
+            type: array
+            items:
+              $ref: '#/definitions/movie'             
+definitions:
+  movie:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Unique identifier representing each movie.
+      title:
+        type: string
+        description: Movie Title
+      releaseYear:
+        type: integer
+        description: The year which movie released.
+      blurb:
+        type: string
+        description: Description about the moviel.
+      runTime:
+        type: integer
+        description: The total time needed to finish the movie
+        
